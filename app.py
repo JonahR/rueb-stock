@@ -2,10 +2,10 @@ from stock import Stock
 
 running = True;
 
-print("Welcome to the Rueb Stock Trader\nType the corresponding number to do a command or type 'exit' to exit")
+print("\n\n\nWelcome to the Rueb Stock Trader\nType the corresponding number to do a command or type 'exit' to exit")
 
 while(running):
-    print("\n1) Look up price\n2)Watchlist options")
+    print("\n1) Look up price\n2) Watchlist options")
     print(">", end=" ")
     user_input = input()
     
@@ -18,7 +18,7 @@ while(running):
     
     #watch list
     elif(user_input == "2"):
-        print("1) View watchlist\n2) Add stock to watchlist\n3) Remove stock remove watchlist")
+        print("1) View watchlist\n2) Add stock to watchlist\n3) Remove stock from watchlist")
         print(">", end=" ")
         user_input = input()
         
