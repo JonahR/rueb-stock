@@ -4,11 +4,11 @@ from stock import Stock
 #Grapher
 class Graph:
     
-    #creates stock object with ticker variable
+    #sets the stock that the graph tracks
     def __init__(self, ticker):
         self.stock = Stock(ticker)
     
-    #updates price and returns value
+    #Live graph that follows stock value *needs a lot of work*
     def start(self):
         plt.axis([0, 10, 0, 1])
         plt.ion()
@@ -26,6 +26,7 @@ class Graph:
             plt.axis([0, i+1, min-1, max+1])
             arr.append(curr)
             plt.plot(arr)
+            #Wait one second
             plt.pause(1)
 
         while True:

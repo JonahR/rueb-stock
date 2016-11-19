@@ -33,7 +33,7 @@ def portfolioCmd():
         print("Unimplemented")
         
 def graphCmd():
-    print("Stock price for:", end=" ")
+    print("Graph stock:", end=" ")
     ticker = input()
     g = Graph(ticker)
     g.start()
@@ -68,6 +68,10 @@ def start():
         #portfolio
         elif(user_input == "3"):
             portfolioCmd()
+        
+        #graph
+        elif(user_input == "4"):
+            graphCmd()
         
         #exit
         elif(user_input == "exit"):
