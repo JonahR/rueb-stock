@@ -1,4 +1,5 @@
 from stock import Stock
+from graph import Graph
 
 #Methods for each available command
 def stockPriceCmd():
@@ -30,6 +31,12 @@ def portfolioCmd():
         print("Unimplemented")
     elif(user_input == "3"):
         print("Unimplemented")
+        
+def graphCmd():
+    print("Stock price for:", end=" ")
+    ticker = input()
+    g = Graph(ticker)
+    g.start()
         
 #Exits application
 #Changes global variable running
