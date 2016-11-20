@@ -8,7 +8,7 @@ class Watchlist:
 
 	# Returns a ticker the user imputs
 	def getTicker(self):
-		print("Add ticker:", end=" ")
+		print("Select a ticker:", end=" ")
 		ticker = input()
 		return ticker
 	# Adds a ticker to the watchlist
@@ -20,7 +20,7 @@ class Watchlist:
 		for ticker in self.watchlist:
 			lookedup_stock = Stock(ticker)
 			print(ticker + ":" + lookedup_stock.getPrice())
-
+	# Removes a ticker from the watchlist given the proper name
 	def removeFromWatchlist(self):
 		ticker = self.getTicker()
 		self.watchlist.remove(ticker)
