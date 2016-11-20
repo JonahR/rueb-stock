@@ -31,4 +31,4 @@ class Graph:
             plt.pause(1)
 
         while True:
-            plt.pause(0.05)
+            plt.pause(0.05)  

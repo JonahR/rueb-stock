@@ -18,11 +18,13 @@ class Watchlist:
         ticker = self.getTicker()
         self.watchlist.append(ticker)
 
-    # Displays the prices of all tickers in watchlist
-    def displayWatchlist(self):
+    # Returns a dictionary of ticker and their values
+    def getWatchlist(self):
+            priceWatchlist = {}
             for ticker in self.watchlist:
                 lookedup_stock = Stock(ticker)
-                print(ticker + ":" + lookedup_stock.getPrice())
+                priceWatchlist[ticker] = lookedup_stock.getPrice()
+            return priceWatchlist
 
     # Removes a ticker from the watchlist given the proper name
     def removeFromWatchlist(self):

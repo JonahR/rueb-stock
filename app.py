@@ -17,7 +17,7 @@ def watchlistCmd():
     user_input = input()
 
     if user_input == "1":
-        user_watchlist.displayWatchlist()
+        print(user_watchlist.getWatchlist())
     elif user_input == "2":
         user_watchlist.addToWatchlist()
     elif user_input == '3':
