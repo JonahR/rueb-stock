@@ -17,11 +17,11 @@ def watchlistCmd():
     user_input = input()
 
     if user_input == "1":
-        print(user_watchlist.getWatchlist())
+        user_watchlist.printWatchlist()
     elif user_input == "2":
-        user_watchlist.addToWatchlist()
+        print(user_watchlist.addToWatchlist())
     elif user_input == '3':
-        user_watchlist.removeFromWatchlist()
+        print(user_watchlist.removeFromWatchlist())
 
 
 def portfolioCmd():

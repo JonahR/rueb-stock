@@ -11,7 +11,7 @@ class Stock:
    
     # updates price and returns value
     def getPrice(self):
-        if self.update() != False:
+        if self.update() is not False:
             return self.price
 
     # calls API to update values

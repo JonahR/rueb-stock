@@ -29,4 +29,16 @@ class Watchlist:
     # Removes a ticker from the watchlist given the proper name
     def removeFromWatchlist(self):
         ticker = self.getTicker()
-        self.watchlist.remove(ticker)
+        if ticker in self.watchlist:
+            self.watchlist.remove(ticker)
+
+    # Returns watchlist in nicely formated string
+    def printWatchlist(self):
+        priceWatchlist = self.getWatchlist()
+        # If priceWatchlist is empty it will return False
+        if priceWatchlist: 
+            for k, v in priceWatchlist.items():
+                # Use str() to convert None types
+                print(k + " - " + str(v))
+        else:
+            print("You have not created a watchlist.")
