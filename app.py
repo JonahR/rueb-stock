@@ -13,11 +13,11 @@ def watchlistCmd():
     print(">", end=" ")
     user_input = input()
         
-    if(user_input == "1"):
+    if user_input == "1":
         print("Unimplemented")
-    elif(user_input == "2"):
+    elif user_input == "2" :
         print("Unimplemented")
-    elif(user_input == "3"):
+    elif user_input == '3':
         print("Unimplemented")
 
 def portfolioCmd():
@@ -25,11 +25,11 @@ def portfolioCmd():
     print(">", end=" ")
     user_input = input()
         
-    if(user_input == "1"):
+    if user_input == "1":
         print("Unimplemented")
-    elif(user_input == "2"):
+    elif user_input == "2" :
         print("Unimplemented")
-    elif(user_input == "3"):
+    elif user_input == "3":
         print("Unimplemented")
         
 def graphCmd():
@@ -38,43 +38,43 @@ def graphCmd():
     g = Graph(ticker)
     g.start()
         
-#Exits application
-#Changes global variable running
-#Potientially add code for saving/backing up data here
+# Exits application
+# Changes global variable running
+# Potentially add code for saving/backing up data here
 def exit():
     global running
     running = False
     print("Goodbye")
     
-#starts application and creates loop until exit command
+# starts application and creates loop until exit command
 def start():
     global running
     running = True
     print("\n\n\nWelcome to the Rueb Stock Trader\nType the corresponding number to do a command or type 'exit' to exit")
 
-    while(running):
+    while running:
         print("\n1) Look up price\n2) Watchlist options")
         print(">", end=" ")
         user_input = input()
     
         #Look up price
-        if(user_input == "1"):
+        if user_input == "1":
             stockPriceCmd()
     
         #watch list
-        elif(user_input == "2"):
+        elif user_input == "2":
             watchlistCmd()
     
         #portfolio
-        elif(user_input == "3"):
+        elif user_input == "3":
             portfolioCmd()
         
         #graph
-        elif(user_input == "4"):
+        elif user_input == "4":
             graphCmd()
         
         #exit
-        elif(user_input == "exit"):
+        elif user_input == "exit":
             exit()
         
         #bad input

@@ -19,9 +19,9 @@ class Graph:
             min = 10000
             max = 0
             curr = float(self.stock.getPrice())
-            if(curr < min):
+            if curr < min:
                 min = curr
-            if(curr > max):
+            if curr > max:
                 max = curr
             plt.axis([0, i+1, min-1, max+1])
             arr.append(curr)
