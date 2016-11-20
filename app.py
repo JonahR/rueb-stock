@@ -1,5 +1,6 @@
 from stock import Stock
 from graph import Graph
+from watchlist import Watchlist
 
 #Methods for each available command
 def stockPriceCmd():
@@ -12,13 +13,13 @@ def watchlistCmd():
     print("1) View watchlist\n2) Add stock to watchlist\n3) Remove stock from watchlist")
     print(">", end=" ")
     user_input = input()
-        
+
     if user_input == "1":
-        print("Unimplemented")
+        user_watchlist.displayWatchlist()
     elif user_input == "2" :
-        print("Unimplemented")
+        user_watchlist.addToWatchlist()
     elif user_input == '3':
-        print("Unimplemented")
+        user_watchlist.removeFromWatchlist()
 
 def portfolioCmd():
     print("1) Portfolio details\n2) Buy stock\n3) Sell stock")
@@ -49,6 +50,7 @@ def exit():
 # starts application and creates loop until exit command
 def start():
     global running
+
     running = True
     print("\n\n\nWelcome to the Rueb Stock Trader\nType the corresponding number to do a command or type 'exit' to exit")
 
@@ -81,5 +83,7 @@ def start():
         else:
             print("That is an invalid command.")
             
+#This will be edited when profiles are included.
+user_watchlist = Watchlist()
 #start application
 start()
