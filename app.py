@@ -1,3 +1,4 @@
+from profile import Profile
 from stock import Stock
 from graph import Graph
 from watchlist import Watchlist
@@ -12,15 +13,20 @@ def stockPriceCmd():
 
 
 def watchlistCmd():
-    print("1) View watchlist\n2) Add stock to watchlist\n3) Remove stock from watchlist")
+    print("1) View watchlist\n2) Add stock to watchlist\n3) Remove stock from watchlist\n")
     print(">", end=" ")
     user_input = input()
 
+    # Displays watchlist
     if user_input == "1":
         user_watchlist.printWatchlist()
+
+    # Adds a stock to the watchlist
     elif user_input == "2":
         print(user_watchlist.addToWatchlist())
-    elif user_input == '3':
+
+    # Removes a stock from the watchlist
+    elif user_input == "3":
         print(user_watchlist.removeFromWatchlist())
 
 
@@ -44,6 +50,13 @@ def graphCmd():
     g.start()
 
 
+def createAccount():
+    profile.createUser()
+
+def login():
+    profile.login()
+
+
 # Exits application
 # Changes global variable running
 # Potentially add code for saving/backing up data here
@@ -61,7 +74,7 @@ def start():
     print("\n\n\nWelcome to the Rueb Stock Trader\nType the corresponding number to do a command or type 'exit' to exit")
 
     while running:
-        print("\n1) Look up price\n2) Watchlist options")
+        print("\n1) Look up price\n2) Watchlist options\n5) Login\n6) Create Account")
         print(">", end=" ")
         user_input = input()
 
@@ -81,6 +94,14 @@ def start():
         elif user_input == "4":
             graphCmd()
 
+        # login
+        elif user_input == "5":
+            login()
+
+        # create account
+        elif user_input == "6":
+            createAccount()
+
         # exit
         elif user_input == "exit":
             exit()
@@ -89,7 +110,8 @@ def start():
         else:
             print("That is an invalid command.")
 
-
+# Creates a profile object
+profile = Profile()
 # This will be edited when profiles are included.
 user_watchlist = Watchlist()
 # start application
