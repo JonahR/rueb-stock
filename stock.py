@@ -35,4 +35,4 @@ class Stock:
             self.price = str(info["l"])
             self.time = str(info["ltt"])
         except Exception as error:
-            return False
+            print("You tried to update a stock that does not exist. Consider using the exists function")
