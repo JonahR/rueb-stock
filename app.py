@@ -70,12 +70,15 @@ def createAccount():
     with open("database/usernames.txt", "r") as f:
         for username_on_line in f:
             username_list.append(username_on_line.strip())
+    f.close()
 
     if username not in username_list:
         with open("database/usernames.txt", "a+") as f:
             f.write(username + "\n")
+        f.close()
         with open("database/" + username + ".txt", "a+") as f:
             f.write("")
+        f.close()
         print("You created an account with the username: " + username)
     else:
         print("Sorry, that username has been taken.")
@@ -89,6 +92,7 @@ def login():
     with open("database/usernames.txt", "r") as f:
         for username_on_line in f:
             username_list.append(username_on_line.strip())
+    f.close()
 
     if username in username_list:
         global  my_profile
@@ -104,18 +108,19 @@ def login():
 # Changes global variable running
 # Potentially add code for saving/backing up data here
 def exit():
-    global running
+    global running, logged_in
     running = False
+    if logged_in:
+        my_profile.save()
+        print("working")
     print("Goodbye")
 
 
 # starts application and creates loop until exit command
 def start():
-    global running
-    global logged_in
+    global running, logged_in
     logged_in = False
     running = True
-    # This variable allows functionality if the user is not logged it
 
     print("\n\n\nWelcome to the Rueb Stock Trader\nType the corresponding number to do a command or type 'exit' to exit")
 
