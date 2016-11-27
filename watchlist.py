@@ -7,15 +7,9 @@ class Watchlist:
     def __init__(self):
         self.watchlist = []
 
-    # Returns a ticker the user imputs
-    def getTicker(self):
-        print("Select a ticker:", end=" ")
-        ticker = input()
-        return ticker
-
     # Adds a ticker to the watchlist
-    def addToWatchlist(self):
-        ticker = self.getTicker()
+    def addToWatchlist(self, ticker):
+        
         s = Stock(ticker)
         if(s.exists()):
             self.watchlist.append(s)
@@ -27,8 +21,7 @@ class Watchlist:
         return self.watchlist
 
     # Removes a ticker from the watchlist given the proper name
-    def removeFromWatchlist(self):
-        ticker = self.getTicker()
+    def removeFromWatchlist(self, ticker):
         
         for s in self.watchlist:
             if(s.ticker == ticker):

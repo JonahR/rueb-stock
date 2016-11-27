@@ -23,12 +23,15 @@ def watchlistCmd():
 
     # Adds a stock to the watchlist
     elif user_input == "2":
-        print(user_watchlist.addToWatchlist())
+        print("Select a ticker:", end=" ")
+        ticker = input()
+        user_watchlist.addToWatchlist(ticker)
 
     # Removes a stock from the watchlist
     elif user_input == "3":
-        print(user_watchlist.removeFromWatchlist())
-
+        print("Select a ticker:", end=" ")
+        ticker = input()
+        user_watchlist.removeFromWatchlist(ticker)
 
 def portfolioCmd():
     print("1) Portfolio details\n2) Buy stock\n3) Sell stock")
