@@ -104,6 +104,12 @@ def login():
     else:
         print("That account does not exist.")
 
+# Logs the user out of their account
+def logout():
+    my_profile.save()
+    global logged_in
+    logged_in = False
+
 # If there is a user logged in, it prints the name
 def print_user_details():
     global logged_in
@@ -133,7 +139,7 @@ def start():
 
     while running:
         print_user_details()
-        print("1) Look up price\n2) Watchlist options\n5) Login\n6) Create Account")
+        print("1) Look up price\n2) Watchlist options\n5) Login/Logout\n6) Create Account")
         print(">", end=" ")
         user_input = input()
 
@@ -155,7 +161,10 @@ def start():
 
         # login
         elif user_input == "5":
-            login()
+            if not logged_in:
+                login()
+            else:
+                logout()
 
         # create account
         elif user_input == "6":
