@@ -104,6 +104,14 @@ def login():
     else:
         print("That account does not exist.")
 
+# If there is a user logged in, it prints the name
+def print_user_details():
+    global logged_in
+    if logged_in:
+        print("\nUser: " + my_profile.username)
+    else:
+        print("\nYou are not logged in")
+
 # Exits application
 # Changes global variable running
 # Potentially add code for saving/backing up data here
@@ -112,7 +120,6 @@ def exit():
     running = False
     if logged_in:
         my_profile.save()
-        print("working")
     print("Goodbye")
 
 
@@ -125,7 +132,8 @@ def start():
     print("\n\n\nWelcome to the Rueb Stock Trader\nType the corresponding number to do a command or type 'exit' to exit")
 
     while running:
-        print("\n1) Look up price\n2) Watchlist options\n5) Login\n6) Create Account")
+        print_user_details()
+        print("1) Look up price\n2) Watchlist options\n5) Login\n6) Create Account")
         print(">", end=" ")
         user_input = input()
 
