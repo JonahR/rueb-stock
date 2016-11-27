@@ -16,29 +16,30 @@ class Watchlist:
     # Adds a ticker to the watchlist
     def addToWatchlist(self):
         ticker = self.getTicker()
-        self.watchlist.append(ticker)
+        s = Stock(ticker)
+        if(s.exists()):
+            self.watchlist.append(s)
+        else:
+            print("This stock does not exist")
 
     # Returns a dictionary of ticker and their values
     def getWatchlist(self):
-            priceWatchlist = {}
-            for ticker in self.watchlist:
-                lookedup_stock = Stock(ticker)
-                priceWatchlist[ticker] = lookedup_stock.getPrice()
-            return priceWatchlist
+        return self.watchlist
 
     # Removes a ticker from the watchlist given the proper name
     def removeFromWatchlist(self):
         ticker = self.getTicker()
-        if ticker in self.watchlist:
-            self.watchlist.remove(ticker)
+        
+        for s in self.watchlist:
+            if(s.ticker == ticker):
+                self.watchlist.remove(s)
 
     # Returns watchlist in nicely formated string
     def printWatchlist(self):
-        priceWatchlist = self.getWatchlist()
-        # If priceWatchlist is empty it will return False
-        if priceWatchlist: 
-            for k, v in priceWatchlist.items():
-                # Use str() to convert None types
-                print(k + " - " + str(v))
+        
+        # If watchlist is empty it will return False
+        if self.watchlist: 
+            for s in self.watchlist:
+                print(s.ticker + " - " + s.getPrice())
         else:
             print("You have not created a watchlist.")
