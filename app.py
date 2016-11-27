@@ -19,7 +19,10 @@ def watchlistCmd():
 
     # Displays watchlist
     if user_input == "1":
-        user_watchlist.printWatchlist()
+        if logged_in:
+            my_profile.watchlist.printWatchlist()
+        else:
+            user_watchlist.printWatchlist()
 
     # Adds a stock to the watchlist
     elif user_input == "2":
@@ -54,11 +57,41 @@ def graphCmd():
 
 
 def createAccount():
-    profile.createUser()
+    username = input("What would you like your username to be: ")
+    username_list = []
 
+    with open("database/usernames.txt", "r") as f:
+        for username_on_line in f:
+            username_list.append(username_on_line.strip())
+
+    if username not in username_list:
+        with open("database/usernames.txt", "a+") as f:
+            f.write(username + "\n")
+        with open("database/" + username + ".txt", "a+") as f:
+            f.write("")
+        print("You created an account with the username: " + username)
+    else:
+        print("Sorry, that username has been taken.")
+
+
+# If the user enters the correct username it will create a global my_profile var
 def login():
-    profile.login()
+    username = input("Enter your username: ")
+    username_list = []
 
+    with open("database/usernames.txt", "r") as f:
+        for username_on_line in f:
+            username_list.append(username_on_line.strip())
+
+    if username in username_list:
+        global  my_profile
+        global logged_in
+
+        my_profile = Profile(username)
+        logged_in = True
+        print("You have logged into " + username)
+    else:
+        print("That account does not exist.")
 
 # Exits application
 # Changes global variable running
@@ -72,8 +105,11 @@ def exit():
 # starts application and creates loop until exit command
 def start():
     global running
-
+    global logged_in
+    logged_in = False
     running = True
+    # This variable allows functionality if the user is not logged it
+
     print("\n\n\nWelcome to the Rueb Stock Trader\nType the corresponding number to do a command or type 'exit' to exit")
 
     while running:
@@ -113,8 +149,7 @@ def start():
         else:
             print("That is an invalid command.")
 
-# Creates a profile object
-profile = Profile()
+
 # This will be edited when profiles are included.
 user_watchlist = Watchlist()
 # start application
