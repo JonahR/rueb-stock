@@ -13,7 +13,15 @@ class Stock:
     def getPrice(self):
         if self.update() is not False:
             return self.price
-
+    
+    # determines if a stock exists        
+    def exists(self):
+        try:
+            u = urllib.request.urlopen("http://finance.google.com/finance/info?client=ig&q=NSE:" + self.ticker)
+            return True
+        except Exception as error:
+            return False
+        
     # calls API to update values
     def update(self):
         try:
